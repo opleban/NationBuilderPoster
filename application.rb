@@ -6,7 +6,7 @@ class SkeletonNBApp < Sinatra::Base
 	post '/people' do
 	    content_type :json
 	 
-	    nb_client = NationBuilder::Client.new('dtla', 'mytoken')
+	    nb_client = NationBuilder::Client.new('testnation', ENV['NB_API_KEY'])
 	    post_data = {
 	      person: {
 	        email: params[:email],
