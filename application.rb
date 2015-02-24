@@ -2,7 +2,6 @@ require 'sinatra/base'
 require 'nationbuilder'
 
 class SkeletonNBApp < Sinatra::Base
-	register Sinatra::CrossOrigin
 	before do
     	response.headers["Access-Control-Allow-Origin"] = "*"
     	response.headers["Access-Control-Allow-Methods"] = "POST"
