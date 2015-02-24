@@ -3,10 +3,13 @@ require 'nationbuilder'
 
 class SkeletonNBApp < Sinatra::Base
 	before do
-    	response.headers["Access-Control-Allow-Origin"] = "*"
-    	response.headers["Access-Control-Allow-Methods"] = "POST"
-    	p response.headers.inspect
-  	end
+   		content_type :json    
+    	headers 'Access-Control-Allow-Origin' => '*', 
+           'Access-Control-Allow-Methods' => ['OPTIONS', 'POST'],
+           'Access-Control-Allow-Headers' => 'Content-Type'  
+	end
+
+	set :protection, false
 
 	post '/people' do
 		p params.inspect
