@@ -1,12 +1,16 @@
 require 'sinatra/base'
-require 'sinatra/cross_origin'
 require 'nationbuilder'
 
 class SkeletonNBApp < Sinatra::Base
-	register Sinatra::CrossOrigin
 
 	post '/people' do
-		cross_origin 
+	    status 200
+	    headers \
+		    "Access-Control-Allow-Origin" => "https://lacity-staging.demo.socrata.com",
+		    "Accces-Control-Allow-Origin" => "https://data.lacity.org",
+		    "Access-Control-Allow-Methods" => "POST",
+		    "Access-Control-Allow-Headers" =>  "Content-Type",
+		    "Access-Control-Max-Age" => "86400" 
 	    content_type :json
 	 
 	    nb_client = NationBuilder::Client.new('testnation', ENV['NB_API_KEY'])
