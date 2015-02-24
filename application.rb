@@ -1,9 +1,17 @@
 require 'sinatra/base'
 require 'nationbuilder'
+require 'rack/cors'
 
 class SkeletonNBApp < Sinatra::Base
 	register Sinatra::CrossOrigin
-
+	use Rack::Cors do
+		allow do
+			origins 'lacity-staging.demo.socrata.com', 'data.lacity.org'
+			resource '/people',
+				methods: [:post],
+			end
+		end
+	end
 
 	post '/people' do
 		before do
