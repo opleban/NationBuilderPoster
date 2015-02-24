@@ -6,7 +6,7 @@ class SkeletonNBApp < Sinatra::Base
 
 	before do
   		if request.request_method == 'OPTIONS'
-    		response.headers["Access-Control-Allow-Origin"] = "lacity-staging.demo.socrata.com"
+    		response.headers["Access-Control-Allow-Origin"] = "https://lacity-staging.demo.socrata.com"
     		response.headers["Access-Control-Allow-Methods"] = "POST"
     		halt 200
 		end
