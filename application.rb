@@ -3,9 +3,10 @@ require 'sinatra/cross_origin'
 require 'nationbuilder'
 
 class SkeletonNBApp < Sinatra::Base
+	register Sinatra::CrossOrigin
 
 	post '/people' do
-		 cross_origin :allow_origin => 'https://lacity-staging.demo.socrata.com || https://lacity.data.org',
+		 cross_origin :allow_origin => ['https://lacity-staging.demo.socrata.com'],
 		    :allow_methods => [:post],
 		    :allow_credentials => false,
 		    :max_age => "60"
